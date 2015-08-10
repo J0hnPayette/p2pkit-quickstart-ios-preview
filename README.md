@@ -62,11 +62,6 @@ Implement `PPKControllerDelegate` protocol and start P2P discovery,GEO discovery
 
 ```objc
 -(void)PPKControllerInitialized {
-	[PPKController startP2PDiscovery];
-	[PPKController startGeoDiscovery];
-	[PPKController startOnlineMessaging];
-}
--(void)PPKControllerInitialized {
     NSData *discoverInfo = [[[UIDevice currentDevice] name] dataUsingEncoding:NSUTF8StringEncoding];
     [PPKController startP2PDiscoveryWithDiscoveryInfo:discoverInfo];
 }
@@ -86,12 +81,14 @@ Add BLE (Bluetooth low energy) permissions to your `Info.plist` file
 Implement `PPKControllerDelegate` protocol to receive P2P discovery events
 
 ```objc
--(void)p2pPeerDiscovered:(NSString*)peerID {
-	NSLog(@"%@ is here", peerID);
+-(void)p2pPeerDiscovered:(PPKPeer *)peer {
+    NSString *discoveryInfoRx = [[NSString alloc] initWithData:peer.discoveryInfo encoding: NSUTF8StringEncoding];
+    NSLog(@"%@ (%@) is here", discoveryInfoRx, peer.peerID);
 }
 
--(void)p2pPeerLost:(NSString*)peerID {
-	NSLog(@"%@ is no longer here", peerID);
+-(void)p2pPeerLost:(PPKPeer *)peer {
+    NSString *discoveryInfoRx = [[NSString alloc] initWithData:peer.discoveryInfo encoding: NSUTF8StringEncoding];
+    NSLog(@"%@ (%@) is no longer here", discoveryInfoRx, peer.peerID);
 }
 ```
 
