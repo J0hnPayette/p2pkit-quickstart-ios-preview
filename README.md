@@ -66,6 +66,10 @@ Implement `PPKControllerDelegate` protocol and start P2P discovery,GEO discovery
 	[PPKController startGeoDiscovery];
 	[PPKController startOnlineMessaging];
 }
+-(void)PPKControllerInitialized {
+    NSData *discoverInfo = [[[UIDevice currentDevice] name] dataUsingEncoding:NSUTF8StringEncoding];
+    [PPKController startP2PDiscoveryWithDiscoveryInfo:discoverInfo];
+}
 ```
 
 ### P2P Discovery
