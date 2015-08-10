@@ -58,7 +58,7 @@ Initialize p2pkit with your personal application key
 [PPKController enableWithConfiguration:@"<YOUR APPLICATION KEY>" observer:self];
 ```
 
-Implement `PPKControllerDelegate` protocol and start P2P discovery,GEO discovery or online messaging when p2pkit is ready
+Implement `PPKControllerDelegate` protocol and start P2P discovery with discovery infos (e.g. your device's name)
 
 ```objc
 -(void)PPKControllerInitialized {
