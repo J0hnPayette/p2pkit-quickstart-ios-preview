@@ -62,8 +62,8 @@ Implement `PPKControllerDelegate` protocol and start P2P discovery with discover
 
 ```objc
 -(void)PPKControllerInitialized {
-    NSData *discoverInfo = [[[UIDevice currentDevice] name] dataUsingEncoding:NSUTF8StringEncoding];
-    [PPKController startP2PDiscoveryWithDiscoveryInfo:discoverInfo];
+    NSData *discoveryInfoTx = [[[UIDevice currentDevice] name] dataUsingEncoding:NSUTF8StringEncoding];
+    [PPKController startP2PDiscoveryWithDiscoveryInfo:discoveryInfoTx];
 }
 ```
 
